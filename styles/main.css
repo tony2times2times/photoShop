@@ -1,0 +1,46 @@
+@font-face {
+  font-family: powerRanger;
+  src: url('../fonts/Power Rangers.ttf')
+}
+#back {
+  float: left;
+  background-position: 90% 09%;
+}
+
+#forward {
+  float: right;
+  background-position: 09% 90%;
+}
+
+.selectStudent{
+  border:none;
+  background: url('../images/arrows.png');
+  width: 115px;
+  height: 115px;
+}
+.selectStudent:hover {
+  opacity: .5;
+}
+
+.tau {
+  align: center;
+}
+
+body {
+  background: black;
+  color:white;
+  text-align: center;
+}
+
+.name {
+  font-family: powerRanger;
+  font-size: 60px;
+}
+
+.jumbotron{
+  font-family: powerRanger;
+  font-size: 150px;
+  text-align: center;
+  color: silver;
+  background: url(../images/lightning) center no-repeat;
+}
