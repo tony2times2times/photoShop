@@ -7,7 +7,10 @@ var count = 0;
 if (debug) {
     console.log('JS standing by!');
 }
-var studentTimmer = setInterval(function(){forward();}, 10000);
+var studentTimmer = setInterval(function() {
+    forward();
+}, 10000);
+
 $(document).ready(function functionName() {
     if (debug) {
         console.log('Document standing by!');
@@ -30,6 +33,42 @@ $(document).ready(function functionName() {
     }
     getRoster();
 });
+
+function morhphinTime() {
+    $('#pic').hide('slow');
+    ranger = parseInt(Math.random() * 10);
+    if (ranger >= 1 && ranger <= 6) {
+        console.log('your number is ' + ranger);
+        $('.name').replaceWith('<img src=images/'+getRanger(ranger)+'.jpg>' + '</img>');
+    }
+    else {
+      morhphinTime();
+    }
+}
+
+function getRanger(val){
+  if(val === 1){
+    return 'blue';
+  }
+  else if (val === 2) {
+    return 'green';
+  }
+  else if (val === 3) {
+    return 'pink';
+  }
+  else if (val === 4) {
+    return 'red';
+  }
+  else if (val === 5) {
+    return 'white';
+  }
+  else if (val === 6) {
+    return 'yellow';
+  }
+  else{
+    console.log('Not a know ranger!');
+  }
+}
 
 function displayNav() {
     var studentNames = [];
@@ -85,21 +124,27 @@ function displayStudent() {
         console.log('displayStudent standing by!');
     }
     var nameDisplay = '<p class="name">' + roster[count].first_name + ' ' + roster[count].last_name + '</p>' + '<br>';
-    var picDisplay = '<img src="' + roster[count].picUrl + '"</img>' + '<br>';
+    var picDisplay = '<img id="pic" src="' + roster[count].picUrl + '"</img>' + '<br>';
     var infoDisplay = '<p class="info">About me: ' + roster[count].info + '</p>';
     var countDisplay = '<p id="count">' + (count + 1) + ' / ' + roster.length + '</p>' + '<br>';
     $('#tau').fadeIn('slow').html(nameDisplay + picDisplay + infoDisplay + countDisplay);
     //reset timmer everytime new student is displayed
     clearInterval(studentTimmer);
-    studentTimmer = setInterval(function(){forward();}, 10000);
+    studentTimmer = setInterval(function() {
+        forward();
+    }, 10000);
 }
 
 function changeStudent(idNumber) {
-    $('#tau').fadeOut('slow', function() {
-        count = idNumber;
-        if (debug) {
-            console.log('indexed at:' + idNumber);
-        }
-        displayStudent();
-    });
+    if (count != idNumber) {
+        $('#tau').fadeOut('slow', function() {
+            count = idNumber;
+            if (debug) {
+                console.log('indexed at:' + idNumber);
+            }
+            displayStudent();
+        });
+    } else {
+        morhphinTime();
+    }
 }
