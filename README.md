@@ -27,4 +27,9 @@ HARD MODE
 PRO MODE
 --------
 
-[] Include a timer that moves to the next person if the user is not clicking on next or prev. If the user clicks on next or prev, the timer should be reset. The timer should transition between people every 10 seconds.
+[x] Include a timer that moves to the next person if the user is not clicking on next or prev. If the user clicks on next or prev, the timer should be reset. The timer should transition between people every 10 seconds.
+
+PLAY MODE
+---------
+
+[x] Add ability to morph each student into Power Ranger by clicking on their button while they are the currently displayed student.
