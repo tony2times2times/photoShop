@@ -1,37 +1,47 @@
 /* fonts */
+
 @font-face {
     font-family: powerRanger;
     src: url('../fonts/Power Rangers.ttf')
 }
 
+
 /*body*/
+
 body {
     background: black;
     color: white;
     text-align: center;
 }
 
+
 /*text*/
-#count{
-  font-family: Impact, Charcoal, sans-serif;
-  padding-top: 50px;
-  font-size: 35px;
-  opacity: 45;
-  color: silver;
+
+#count {
+    font-family: Impact, Charcoal, sans-serif;
+    padding-top: 50px;
+    font-size: 35px;
+    opacity: 45;
+    color: silver;
 }
+
 .tau {
     align: center;
 }
+
 .name {
-    font-family: powerRanger;
-    font-size: 60px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 80px;
+    color: silver;
 }
+
 .title {
     font-family: powerRanger;
     text-align: center;
     color: yellow;
     background: black;
 }
+
 #morphin {
     font-family: monospace;
     font-size: 75px;
@@ -40,6 +50,7 @@ body {
     height: 30px;
     color: yellow;
 }
+
 #tauer {
     font-family: powerRanger;
     font-size: 150px;
@@ -48,8 +59,13 @@ body {
     height: 150px;
     color: yellow;
 }
+.info{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 35px;
+}
 
 /* Buttons */
+
 #back {
     float: left;
     background-position: 90% 09%;
@@ -66,4 +82,13 @@ body {
 }
 .select_student:hover {
     opacity: .5;
+}
+.student_buttons {
+    font-size: 20px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    background: url('../images/morpher.png') center no-repeat;
+    color: yellow;
+    border-radius: 25px;
+    height: 160px;
+    width:150px;
 }

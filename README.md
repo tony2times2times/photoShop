@@ -16,13 +16,13 @@ http://devjana.net/support/tau_students.json
 KINDA HARD MODE
 ---------------
 
-[] Add a button for each person - appended to DOM when the json is read in. Clicking any button will display that person. Place these between the prev and next buttons.
+[x] Add a button for each person - appended to DOM when the json is read in. Clicking any button will display that person. Place these between the prev and next buttons.
 
 
 HARD MODE
 ---------
 
-[] Include a fade out and fade in animation in-between transitioning people.
+[x] Include a fade out and fade in animation in-between transitioning people.
 
 PRO MODE
 --------
