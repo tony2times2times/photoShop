@@ -1,12 +1,13 @@
 //TonyPeraza 11/04/16
 //Prime Weekend 2
-var debug = true;
+var debug = false;
 var roster = [];
 var count = 0;
 
 if (debug) {
     console.log('JS standing by!');
 }
+//change the display after it has been shown for 10 seconds
 var studentTimmer = setInterval(function() {
     forward();
 }, 10000);
@@ -15,7 +16,7 @@ $(document).ready(function functionName() {
     if (debug) {
         console.log('Document standing by!');
     }
-
+    //get json object from server and assign it to the global roster variable
     function getRoster() {
         $.ajax({
             url: 'http://devjana.net/support/tau_students.json',
@@ -34,42 +35,37 @@ $(document).ready(function functionName() {
     getRoster();
 });
 
+//display a Power Ranger that student will morph into
 function morhphinTime() {
     $('#pic').hide('slow');
     ranger = parseInt(Math.random() * 10);
     if (ranger >= 1 && ranger <= 6) {
         console.log('your number is ' + ranger);
-        $('.name').replaceWith('<img src=images/'+getRanger(ranger)+'.jpg>' + '</img>');
+        $('.name').replaceWith('<img src=images/' + getRanger(ranger) + '.jpg>' + '</img>');
+    } else {
+        morhphinTime();
     }
-    else {
-      morhphinTime();
+}
+//select a Power Ranger that student will morph into
+function getRanger(val) {
+    if (val === 1) {
+        return 'blue';
+    } else if (val === 2) {
+        return 'green';
+    } else if (val === 3) {
+        return 'pink';
+    } else if (val === 4) {
+        return 'red';
+    } else if (val === 5) {
+        return 'white';
+    } else if (val === 6) {
+        return 'yellow';
+    } else {
+        console.log('Not a know ranger!');
     }
 }
 
-function getRanger(val){
-  if(val === 1){
-    return 'blue';
-  }
-  else if (val === 2) {
-    return 'green';
-  }
-  else if (val === 3) {
-    return 'pink';
-  }
-  else if (val === 4) {
-    return 'red';
-  }
-  else if (val === 5) {
-    return 'white';
-  }
-  else if (val === 6) {
-    return 'yellow';
-  }
-  else{
-    console.log('Not a know ranger!');
-  }
-}
-
+//display individual buttons for each student
 function displayNav() {
     var studentNames = [];
     for (var i = 0; i < roster.length; i++) {
@@ -79,11 +75,13 @@ function displayNav() {
     if (debug) {
         console.log('Student names: ' + studentNames);
     }
+    //event listeners for each button
     $('#studentButtons').html(studentNames);
     $('#back').click(back);
     $('#forward').click(forward);
 }
 
+//define how to move back in the roster array so it loops around after the 0th person is called.
 function back() {
     $('#tau').fadeOut('slow', function() {
         if (debug) {
@@ -101,7 +99,7 @@ function back() {
     });
 
 }
-
+//define how to move forward in the roster array so it loops around after the last person is called.
 function forward() {
     $('#tau').fadeOut('slow', function() {
         if (debug) {
@@ -118,7 +116,7 @@ function forward() {
         displayStudent();
     });
 }
-
+//display currently selected student.
 function displayStudent() {
     if (debug) {
         console.log('displayStudent standing by!');
@@ -134,7 +132,7 @@ function displayStudent() {
         forward();
     }, 10000);
 }
-
+//function used when individualbutton is pushed
 function changeStudent(idNumber) {
     if (count != idNumber) {
         $('#tau').fadeOut('slow', function() {
