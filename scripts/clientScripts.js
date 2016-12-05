@@ -7,7 +7,7 @@ var count = 0;
 if (debug) {
     console.log('JS standing by!');
 }
-
+var studentTimmer = setInterval(function(){forward();}, 10000);
 $(document).ready(function functionName() {
     if (debug) {
         console.log('Document standing by!');
@@ -28,53 +28,57 @@ $(document).ready(function functionName() {
             }
         });
     }
-
-    function displayNav() {
-        var studentNames = [];
-        for (var i = 0; i < roster.length; i++) {
-            studentNames[i] = '<button class="student_buttons" onclick="changeStudent(' + i + ')">' +
-                roster[i].first_name + ' ' + roster[i].last_name + '</button>';
-        }
-        if (debug) {
-            console.log('Student names: ' + studentNames);
-        }
-        $('#studentButtons').html(studentNames);
-        $('#back').click(function() {
-            $('#tau').fadeOut('slow', function() {
-                if (debug) {
-                    console.log('current student number is : ' + count + ' subtracting 1');
-                }
-                if (count > 0) {
-                    count--;
-                } else {
-                    count = roster.length - 1;
-                }
-                if (debug) {
-                    console.log('Student number is now : ' + count);
-                }
-                displayStudent();
-            });
-        });
-        $('#forward').click(function() {
-            $('#tau').fadeOut('slow', function() {
-                $('#tau').fadeOut('slow');
-                if (debug) {
-                    console.log('current student number is : ' + count + ' adding 1');
-                }
-                if (count < (roster.length - 1)) {
-                    count++;
-                } else {
-                    count = 0;
-                }
-                if (debug) {
-                    console.log('Student number is now : ' + count);
-                }
-                displayStudent();
-            });
-        });
-    }
     getRoster();
 });
+
+function displayNav() {
+    var studentNames = [];
+    for (var i = 0; i < roster.length; i++) {
+        studentNames[i] = '<button class="student_buttons" onclick="changeStudent(' + i + ')">' +
+            roster[i].first_name + ' ' + roster[i].last_name + '</button>';
+    }
+    if (debug) {
+        console.log('Student names: ' + studentNames);
+    }
+    $('#studentButtons').html(studentNames);
+    $('#back').click(back);
+    $('#forward').click(forward);
+}
+
+function back() {
+    $('#tau').fadeOut('slow', function() {
+        if (debug) {
+            console.log('current student number is : ' + count + ' subtracting 1');
+        }
+        if (count > 0) {
+            count--;
+        } else {
+            count = roster.length - 1;
+        }
+        if (debug) {
+            console.log('Student number is now : ' + count);
+        }
+        displayStudent();
+    });
+
+}
+
+function forward() {
+    $('#tau').fadeOut('slow', function() {
+        if (debug) {
+            console.log('current student number is : ' + count + ' adding 1');
+        }
+        if (count < (roster.length - 1)) {
+            count++;
+        } else {
+            count = 0;
+        }
+        if (debug) {
+            console.log('Student number is now : ' + count);
+        }
+        displayStudent();
+    });
+}
 
 function displayStudent() {
     if (debug) {
@@ -85,14 +89,17 @@ function displayStudent() {
     var infoDisplay = '<p class="info">About me: ' + roster[count].info + '</p>';
     var countDisplay = '<p id="count">' + (count + 1) + ' / ' + roster.length + '</p>' + '<br>';
     $('#tau').fadeIn('slow').html(nameDisplay + picDisplay + infoDisplay + countDisplay);
+    //reset timmer everytime new student is displayed
+    clearInterval(studentTimmer);
+    studentTimmer = setInterval(function(){forward();}, 10000);
 }
 
 function changeStudent(idNumber) {
     $('#tau').fadeOut('slow', function() {
-            count = idNumber;
-            if (debug) {
-                console.log('indexed at:' + idNumber);
-            }
-            displayStudent();
-        });
-    }
+        count = idNumber;
+        if (debug) {
+            console.log('indexed at:' + idNumber);
+        }
+        displayStudent();
+    });
+}
